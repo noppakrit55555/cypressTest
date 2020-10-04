@@ -15,7 +15,7 @@ describe('About Register', () => {
         cy.wait(500);
     });
     it('กรอกอีเมล', () => {
-        cy.get('#Email').type('test1@gmail.com');
+        cy.get('#Email').type('test10@gmail.com');
         cy.get('#ConfirmEmail').click();
         cy.wait(500)
         cy.get('#OTP').type('888888');
@@ -36,7 +36,7 @@ describe('About Register', () => {
     });
     it('กรอกเลขบัตรประชาชนและเลขหลังบัตร', () => {
         cy.get('#CitizenID').type('4594098530544');
-        cy.get('#LaserID').type('12345');
+        cy.get('#LaserID').type('JT0ß12345');
     });
     it('กรอกวันที่ออกเอกสาร และ วันหมดอายุ', () => {
         cy.get('#IssuedDate').type('10/08/2560') //วันที่ออก
@@ -93,23 +93,27 @@ describe('About Register', () => {
         const image01 = '03.jpg';
         cy.get('#UploadSelfie').attachFile(image01);
         cy.get('#UploadID').attachFile(image01);
+        
 
 
     });
 
     it('ส่งคำขอ โคตรพ่อบัค', () => {
-        /*cy.get('#Password').clear()
+        cy.get('#Password').clear()
         cy.get('#ConfirmPassword').clear()
         cy.get('#Password').type('P@ssword1');
         cy.get('#ConfirmPassword').type('P@ssword1')
         cy.get('#LaserID').clear()
         cy.get('#LaserID').type('JT00797039');
         cy.get('#NameEnLastName').clear()
-        cy.get('#NameEnLastName').type('Khanggrang')*/
-        cy.get('[data-bind="click:Events.Send"]').click({ force: true }).should('not.have.class', 'disable')
+        cy.get('#NameEnLastName').type('Khanggrang')
         cy.wait(3000)
+        cy.get('[data-bind="click:Events.Send"]').click({ force: true }).should('not.have.class', 'disable')
         cy.get('[data-bind="click:Events.SendConfirm"]').click({ force: true })
-        cy.wait(2000)
+
+
+    });
+       
     })
     context('Admin', () => {
         beforeEach(() => {
@@ -142,4 +146,3 @@ describe('About Register', () => {
 
 
 
-})
